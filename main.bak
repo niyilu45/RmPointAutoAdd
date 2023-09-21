@@ -1,0 +1,41 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <cstring>
+#include <string>
+#include "dumpClass.h"
+
+#define RM_DUMP_FUNC_AAAA {\
+    char fn[256] = {0}; \
+    sprintf(fn, "RM_DUMP_FUNC_%s_AAAA.txt", ssType.c_str()); \
+    DumpFile(fn, tti); \
+}
+
+//#define RM_DUMP_FUNC_AAAA tti++
+void DumpFile(char* fn, int val)
+{
+    FILE* fp = fopen(fn, "w");
+    fprintf(fp, "%d", val);
+    fclose(fp);
+}
+
+
+int main(int argc, char* argv[])
+{
+    int tti = 99;
+    std::string ssType = "CSS";
+    int AVar = 11;
+    std::string BVar = "OK";
+    RM_DUMP_FUNC_AAAA;
+    RM_DUMP_FUNC_AAAA;
+    printf("This is for test auto gen rm dump\n");
+    // RM_DUMP_FLAG: _name="monitor_{int:tti|[0:3]}.txt" || _vars = "AVar, BVar" RM_DUMP_FLAG_END
+    // RM_DUMP_FLAG: _name="monitor_{int:tti|[0:3]}.txt" || _flag = "a+" || _vars = "AVar, BVar"RM_DUMP_FLAG_END
+
+    // RM_DUMP_FLAG: _name="monitor_{string:ssType|['CSS', 'USS']}_cfg{int:tti|[1,2,4]}_ag.txt"|| _flag = "a+" || _en = 1 || _vars = "AVar" RM_DUMP_FLAG_END
+    // RM_DUMP_FLAG: _name="no_var_file.txt"|| _flag = "a+" RM_DUMP_FLAG_END
+    // RM_DUMP_FLAG: _name="no_var_file.txt"|| _flag = "a+" RM_DUMP_FLAG_END
+    // RM_DUMP_FLAG: _name="no_var_file.txt"|| _flag = "a+" RM_DUMP_FLAG_END
+    //
+    // RM_DUMP_FLAG: _name="monitor_{string:ssType|['CSS', 'USS']}_cfg{int:tti|[1,2,4]}_ag.txt"|| _flag = "w+" || _en = 1 || _vars = "AVar" RM_DUMP_FLAG_END
+    return 0;
+}
