@@ -27,9 +27,11 @@
 
 5. RM打印宏插入前后代码对比
 
-![RM打印点插入前后对比](D:\program\Python\RmDumpAutoAdd\pic\RM打印点插入前后对比.bmp)
+![RM打印点插入前后对比](.\pic\RM打印点插入前后对比.bmp)
 
 # 二、背景
+
+
 
 # 三、实现思路
 
